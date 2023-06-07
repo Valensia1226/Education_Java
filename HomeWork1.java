@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class HomeWork1 {
 
     public static int TriangleNumber(int n){
         return n*(n+1)/2;
@@ -54,22 +54,7 @@ public class Main {
         if (flag == false) System.out.println("Неверный математический оператор");
     }
 
-    //public static void Equation(){
-
-    public static void main(String[] args) {
-        //Task1
-        System.out.println(TriangleNumber(5));
-
-        //Task1_1
-        System.out.println(Factorial(5));
-
-        //Task2
-        PrimeNumbers(1000);
-
-        //Task3
-        Calc();
-
-        //Task4
+    public static void Equation(){
         System.out.print("Введите уравнение вида q + w = e через пробелы; q,w,e >= 0: ");
         Scanner sc = new Scanner(System.in);
         String equation = sc.nextLine(); //вводим уравнение
@@ -81,24 +66,39 @@ public class Main {
             int c = Integer.parseInt(eq[4]); //выводим в отдельную int переменную результат после =
             boolean flag = false; //флаг для проверки уравнения на существование
 
-            else {
-                int i = 0;
-                while (i < 10) {
-                    String number = String.valueOf(i);
-                    String numA = eq[0].replaceAll("\\?", number); //подставляем текущее значение i, перебираем все цифры
-                    a = Integer.parseInt(numA); //переводим в int
-                    String numB = eq[2].replaceAll("\\?", number);
-                    b = Integer.parseInt(numB);
-                    if (a + b == c) {
-                        System.out.printf("Ваше выражение: %s + %s = %s", a, b, c);
-                        flag = true;
-                        break;
-                    }
-                    i++;
+            int i = 0;
+            while (i < 10) {
+                String number = String.valueOf(i);
+                String numA = eq[0].replaceAll("\\?", number); //подставляем текущее значение i, перебираем все цифры
+                a = Integer.parseInt(numA); //переводим в int
+                String numB = eq[2].replaceAll("\\?", number);
+                b = Integer.parseInt(numB);
+                if (a + b == c) {
+                    System.out.printf("Ваше выражение: %s + %s = %s", a, b, c);
+                    flag = true;
+                    break;
                 }
-                if (flag == false) System.out.println("Такого уравнения не существует");
-            //}
+                i++;
+            }
+            if (flag == false) System.out.println("Такого уравнения не существует");
         }
         else System.out.println("Неверно введено уравнение, убедитесь в наличие пробелов между элементами уравнения");
+    }
+
+    public static void main(String[] args) {
+        //Task1
+        //System.out.println(TriangleNumber(5));
+
+        //Task1_1
+        //System.out.println(Factorial(5));
+
+        //Task2
+        //PrimeNumbers(1000);
+
+        //Task3
+        //Calc();
+
+        //Task4
+        Equation();
     }
 }
