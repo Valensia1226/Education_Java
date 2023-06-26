@@ -17,7 +17,7 @@ public class Main {
         answer = sc.nextLine(); //второй фильтр по уточняющему критерию
 
         Deque<String> rezult = new LinkedList<>();
-        if ((number > 0) && (number < 6)){ //если критерий не цвет
+        if (((number > 0) && (number < 3)) || ((number > 3) && (number < 6))){ //если критерий не цвет
             int answ = Integer.parseInt(answer);
             for (String key : noteList.keySet()){ //идем по карте с ноутбуками, для каждого конкретного ноута достаем его параметры и сверяем нужный
                 HashMap<String, Object> parameters = noteList.get(key);
@@ -29,7 +29,19 @@ public class Main {
                 }
             }
         }
-        else{
+        else if (number == 3) {
+            int answ = Integer.parseInt(answer);
+            String os = null;
+            if (answ == 1) os = "Windows";
+            else if (answ == 2) os = "Linux";
+            else if (answ == 3) os = "MacOS";
+            for (String key : noteList.keySet()) {
+                HashMap<String, Object> parameters = noteList.get(key);
+                String filter = parameters.get(forMap(number)).toString();
+                if (os.equals(filter)) rezult.addFirst(key);
+            }
+        } 
+        else if (number == 6){
             for (String key : noteList.keySet()) {
                 HashMap<String, Object> parameters = noteList.get(key);
                 String filter = parameters.get(forMap(number)).toString();
